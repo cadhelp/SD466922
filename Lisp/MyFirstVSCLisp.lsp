@@ -1,0 +1,12 @@
+(defun c:firstroutine ()
+  (vlax-for layouts (vla-get-layouts (vla-get-activedocument (vlax-get-acad-object)))
+    (vlax-for object (vla-get-block layouts)
+      (if (= (vla-get-objectname object) "AcDbViewport")
+        (progn
+          (vlax-dump-object object T)
+          (vla-put-displaylocked object :vlax-true)
+        )
+      )
+    )
+  )
+)
