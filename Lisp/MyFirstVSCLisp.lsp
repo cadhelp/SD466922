@@ -1,4 +1,5 @@
-(defun c:firstroutine ()
+(defun c:firstroutine ( / myVar )
+  (setq myVar (getvar "cmddia"))
   (vlax-for layouts (vla-get-layouts (vla-get-activedocument (vlax-get-acad-object)))
     (vlax-for object (vla-get-block layouts)
       (if (= (vla-get-objectname object) "AcDbViewport")
